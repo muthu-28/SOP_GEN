@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOP Generation Tool</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  </head>
+  <body>
+    <main>
+      <!-- Header Start -->
+      <header>
+        <nav class="nav container">
+          {% comment %} <img src="{% static 'images/logo.png' %}"width=136px> {% endcomment %}
+          <a href="https://effizient.ca"><img src="{% static 'images/logo.png' %}" width="136" height="26"></a>
+
+
+          <h2 class="nav_logo"></h2>
+
+          <ul class="menu_items">
+            <img src="{% static 'images/times.svg' %}" alt="timesicon" id="menu_toggle" />
+          </ul>
+          <img src="{% static 'images/bars.svg' %}" alt="timesicon" id="menu_toggle" />
+        </nav>
+      </header>
+      <!-- Header End -->
+
+      <!-- Hero Start -->
+      <section class="hero">
+        <div class="row container">
+          <div class="column">
+            <h2>{{email}}<br />Successfully Submitted !</h2>
+            <p>Thanks for choosing our tool!</p>
+            <p>Check your registered Mail for SOP generated PDF & DOCS</p>
+            <div class="buttons">
+             <a href="{% url 'login' %}"><button class="btn">Back</button></a>
+            </div>
+          </div>
+          <div class="column">
+            <img src="{% static 'hero.png' %}" alt="heroImg" class="hero_img" />
+          </div>
+        </div>
+        <img src="{% static 'curve.png' %}" alt="" class="curveImg" />
+      </section>
+      <!-- Hero End-->
+    </main>
+
+    <script>
+      const header = document.querySelector("header");
+      const menuToggler = document.querySelectorAll("#menu_toggle");
+
+      menuToggler.forEach(toggler => {
+        toggler.addEventListener("click", () => header.classList.toggle("showMenu"));
+      });
+    </script>
+  </body>
+</html>

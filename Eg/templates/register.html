@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="static\css\style.css">
+</head>
+<body>
+    <section class="container">
+        <header>Registration Form</header>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <div class="input-box">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+                {% if request.method == 'POST' %}
+                    {{ form.email.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.full_name.id_for_label }}">Name</label>
+                {{ form.full_name }}
+                {% if request.method == 'POST' %}
+                    {{ form.full_name.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.age.id_for_label }}">Age</label>
+                {{ form.age }}
+                {% if request.method == 'POST' %}
+                    {{ form.age.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.highest_education.id_for_label }}">Highest Level of Education</label>
+                <select id="highest_education" name="highest_education" required>
+                    <option value="Master">Master</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="High school">High school</option>
+                    <option value="Diploma">Diploma</option>
+                    <!-- Add more options as needed -->
+                </select><br>
+               
+                {% if request.method == 'POST' %}
+                    {{ form.highest_education.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.institute.id_for_label }}">Institute</label>
+                {{ form.institute }}
+                {% if request.method == 'POST' %}
+                    {{ form.institute.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.country.id_for_label }}">Country</label>
+                {{ form.country }}
+                {% if request.method == 'POST' %}
+                    {{ form.country.errors }}
+                {% endif %}
+            </div>
+            <button type="submit">NEXT</button>
+           <!-- <a href='next'></a> -->
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SOP GENERATION TOOL</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="container">
+        <header>SOP generation Tool</header>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <div class="input-box">
+                <label for="{{ form.dept.id_for_label }}">Department</label>
+                
+                {{ form.dept }}
+                {% if request.method == 'POST' %}
+                    {{ form.dept.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.work_exp.id_for_label }}">Work Experience</label>
+                
+                {{ form.work_exp }}
+                {% if request.method == 'POST' %}
+                    {{ form.work_exp.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.inscanada.id_for_label }}">Institute in Canada</label>
+                {{ form.inscanada }}
+                {% if request.method == 'POST' %}
+                    {{ form.inscanada.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.POS.id_for_label }}">Program Of Study</label>
+            
+                {{ form.POS }}
+                {% if request.method == 'POST' %}
+                    {{ form.POS.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.feepaid.id_for_label }}">Fee paid for first semester</label>
+                <select id="feepaid" name="feepaid" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Not Applicable">Not Applicable</option>
+                </select>
+                {% if request.method == 'POST' %}
+                    {{ form.feepaid.errors }}
+                {% endif %}
+                <label for="{{ form.amount.id_for_label }}">Fee Amount Paid</label>
+                <input type="amount" name="amount"  required="" id="amount" fdprocessedid="u9yh8q"style="width:20%">
+                
+                
+                {% if request.method == 'POST' %}
+                    {{ form.amount.errors }}
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <label for="{{ form.completed_gic.id_for_label }}">completed GIC Course</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <select id="completed_gic" name="completed_gic" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Not Applicable">Not Applicable</option>
+                </select>
+                {% if request.method == 'POST' %}
+                    {{ form.completed_gic.errors }}
+                {% endif %}
+                <label for="{{ form.gicamount.id_for_label }}">GIC Amount Paid</label>
+                <input type="gicamount" name="gicamount"  required="" id="gicamount" fdprocessedid="u9yh8q"style="width:20%">
+
+                {% if request.method == 'POST' %}
+                    {{ form.gicamount.errors }}
+                {% endif %}
+            </div>
+            
+            <button type="submit">Next</button>
+            <!-- <a href='last'></a> -->
+        </form>
+    </section>
+</body>
+</html>
